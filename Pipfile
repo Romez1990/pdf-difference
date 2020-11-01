@@ -9,6 +9,7 @@ python_version = "3.8"
 [packages]
 pillow = "*"
 opencv-python = "*"
+scikit-image = "*"
 pdf2image = "*"
 
 [dev-packages]
