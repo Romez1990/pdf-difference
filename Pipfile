@@ -10,6 +10,7 @@ python_version = "3.8"
 pillow = "*"
 opencv-python = "*"
 scikit-image = "*"
+imutils = "*"
 pdf2image = "*"
 
 [dev-packages]
