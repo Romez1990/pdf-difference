@@ -12,5 +12,6 @@ opencv-python = "*"
 scikit-image = "*"
 imutils = "*"
 pdf2image = "*"
+numpy = "==1.19.3"
 
 [dev-packages]
