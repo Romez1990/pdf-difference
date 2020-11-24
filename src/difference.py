@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import (
     Tuple,
     List,
@@ -28,6 +29,18 @@ from skimage.metrics import (
 from imutils import (
     grab_contours,
 )
+
+from .convert_pdf import convert_pdf_to_images, convert_images_to_pdf
+
+
+def get_difference(original: Path, copy: Path) -> bytes:
+    original_pages = convert_pdf_to_images(original)
+    copy_pages = convert_pdf_to_images(copy)
+    result_pages = []
+    for original_page, copy_page in zip(original_pages, copy_pages):
+        difference = get_difference_between_images(original_page, copy_page)
+        result_pages.append(difference)
+    return convert_images_to_pdf(result_pages)
 
 
 def get_difference_between_images(image_1_bytes: bytes, image_2_bytes: bytes) -> bytes:
