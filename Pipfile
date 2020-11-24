@@ -14,5 +14,6 @@ imutils = "*"
 pdf2image = "*"
 img2pdf = "*"
 numpy = "==1.19.3"
+pyqt5 = "*"
 
 [dev-packages]
