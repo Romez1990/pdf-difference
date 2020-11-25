@@ -1,4 +1,5 @@
 from pathlib import Path
+from os import startfile
 from os.path import getctime
 from datetime import datetime
 from typing import (
@@ -42,3 +43,7 @@ recent_files = read_recent_files()
 
 def add_to_recent(path: Path) -> None:
     recent_files.insert(0, path)
+
+
+def open_file(path: Path) -> None:
+    startfile(path)
