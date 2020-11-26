@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from pathlib import Path
-from paths import assets_path
+from src.paths import assets_path
 
 
 class Ui_main_window(object):
@@ -144,7 +144,10 @@ class Ui_main_window(object):
         self.pushButton_1.setGeometry(QtCore.QRect(170, 300, 101, 21))
         self.pushButton_1.setStyleSheet("")
         self.pushButton_1.setObjectName("pushButton_1")
-
+        self.textEdit_2 = QtWidgets.QTextEdit(Form)
+        self.textEdit_2.setGeometry(QtCore.QRect(170, 320, 101, 21))
+        self.textEdit_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.textEdit_2.setObjectName("textEdit_2")
         self.progressBar_2 = QtWidgets.QProgressBar(Form)
         self.progressBar_2.setGeometry(QtCore.QRect(290, 360, 118, 23))
         self.progressBar_2.setStyleSheet("")
@@ -174,6 +177,10 @@ class Ui_main_window(object):
         self.pushButton_3.setGeometry(QtCore.QRect(420, 300, 101, 21))
         self.pushButton_3.setStyleSheet("")
         self.pushButton_3.setObjectName("pushButton_1")
+        self.textEdit_1 = QtWidgets.QTextEdit(Form)
+        self.textEdit_1.setGeometry(QtCore.QRect(420, 320, 101, 21))
+        self.textEdit_1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.textEdit_1.setObjectName("textEdit_1")
         self.label_9 = QtWidgets.QLabel(Form)
         self.label_9.setGeometry(QtCore.QRect(180, 220, 91, 71))
         self.label_9.setStyleSheet("QFrame, QLabel, QToolTip {\n"
