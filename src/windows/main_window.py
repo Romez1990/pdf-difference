@@ -14,6 +14,7 @@ from ..recent_files import (
 )
 from .main_window_ui import Ui_main_window
 
+import time
 
 class MainWindow(QMainWindow, Ui_main_window):
     def __init__(self) -> None:
@@ -36,6 +37,8 @@ class MainWindow(QMainWindow, Ui_main_window):
         self.textEdit_1.setReadOnly(True)
         self.textEdit_1.verticalScrollBar().hide()
         self.textEdit_1.setFrameStyle(0)
+        self.movie.start()
+        self.label_8.setHidden(True)
 
     def __browse_original(self) -> None:
         self.__original_path = self.__get_pdf_path('original')
@@ -58,7 +61,13 @@ class MainWindow(QMainWindow, Ui_main_window):
             self.__show_error()
             return
 
-        Thread(target=self.__compare_and_show).start()
+        t1 = Thread(target=self.__compare_and_show)
+        t1.start()
+        self.label_8.show()
+        print('In process')  #я хз как принты работают,
+        t1.join()            #а гифка только после завершения включается
+        print('Done')        #я явно что-то упускаю, пробовал и через if, и через while
+        #self.label_8.hide()
 
     def __compare_and_show(self) -> None:
         result = get_difference(self.__original_path, self.__copy_path)
