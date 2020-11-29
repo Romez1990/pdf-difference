@@ -8,7 +8,6 @@ from PyQt5.QtWidgets import (
     QFileDialog,
     QMessageBox,
 )
-import os
 
 from ..difference import get_difference
 from ..recent_files import (
@@ -44,10 +43,11 @@ class MainWindow(QMainWindow, Ui_main_window):
 
     def __browse_original(self) -> None:
         self.__original_path = self.__get_pdf_path('original')
-        self.__show_file_name(self.textEdit_2, self.__original_path)
+        self.__show_or_hide_file_name(self.textEdit_2, self.__original_path)
+
     def __browse_copy(self) -> None:
         self.__copy_path = self.__get_pdf_path('copy')
-        self.__show_file_name(self.textEdit_1, self.__copy_path)
+        self.__show_or_hide_file_name(self.textEdit_1, self.__copy_path)
 
     def __get_pdf_path(self, name: str) -> Optional[Path]:
         caption = f'Open {name}'
@@ -57,6 +57,14 @@ class MainWindow(QMainWindow, Ui_main_window):
         if not path:
             return None
         return Path(path)
+
+    def __show_or_hide_file_name(self, text_edit, path: Optional[Path]) -> None:
+        if path is None:
+            text_edit.hide()
+            return
+        filename = str(path.name)
+        text_edit.setText(filename)
+        text_edit.show()
 
     def __compare(self):
         if self.__original_path is None or self.__copy_path is None:
@@ -82,11 +90,3 @@ class MainWindow(QMainWindow, Ui_main_window):
         msg.setText('One of files is not selected')
         msg.setWindowTitle('Error')
         msg.exec()
-
-    def __show_file_name(self, textEdit, file):
-        if file is None:
-            textEdit.hide()
-        else:        #ну тут просто берем название файла, а не фул путь
-            textEdit.setText(os.path.basename(str(file)))
-            textEdit.show()
-    #гифку я пока не докрутил, время спать уже :^(
