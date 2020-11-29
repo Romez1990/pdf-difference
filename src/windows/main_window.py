@@ -28,7 +28,7 @@ class MainWindow(QMainWindow, Ui_main_window):
     def __init_ui(self) -> None:
         self.pushButton_1.clicked.connect(self.__browse_original)
         self.pushButton_3.clicked.connect(self.__browse_copy)
-        self.pushButton_2.clicked.connect(self.__compare)
+        self.pushButton_2.clicked.connect(self.__start_compare)
         self.progressBar_2.hide()
         self.textEdit_2.hide()
         self.textEdit_2.setReadOnly(True)
@@ -66,23 +66,19 @@ class MainWindow(QMainWindow, Ui_main_window):
         text_edit.setText(filename)
         text_edit.show()
 
-    def __compare(self):
+    def __start_compare(self) -> None:
+        Thread(target=self.__compare_and_show).start()
+
+    def __compare_and_show(self) -> None:
         if self.__original_path is None or self.__copy_path is None:
             self.__show_error()
             return
 
-        t1 = Thread(target=self.__compare_and_show)
-        t1.start()
         self.label_8.show()
-        print('In process')  #я хз как принты работают,
-        t1.join()            #а гифка только после завершения включается
-        print('Done')        #я явно что-то упускаю, пробовал и через if, и через while
-        #self.label_8.hide()
-
-    def __compare_and_show(self) -> None:
         result = get_difference(self.__original_path, self.__copy_path)
         result_path = save_file(result)
         open_file(result_path)
+        self.label_8.hide()
 
     def __show_error(self) -> None:
         msg = QMessageBox()
