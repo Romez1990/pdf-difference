@@ -49,14 +49,14 @@ class MainWindow(QMainWindow, Ui_main_window):
         self.__copy_path = self.__get_pdf_path('copy')
         self.__show_file_name(self.textEdit_1, self.__copy_path)
 
-    def __get_pdf_path(self, name: str) -> Path:
+    def __get_pdf_path(self, name: str) -> Optional[Path]:
         caption = f'Open {name}'
         filter = 'Adobe PDF files (*.pdf)'
         path, _ = QFileDialog.getOpenFileName(self, caption, filter=filter)
-        if len(path) == 0:      #если при выборе жмакнуть отмену
-            path = None         #то все равно берется какой-то путь
-        else:                   #вот за этим тут if else :^)
-            return Path(path)
+        #  when cancel is pressed
+        if not path:
+            return None
+        return Path(path)
 
     def __compare(self):
         if self.__original_path is None or self.__copy_path is None:
