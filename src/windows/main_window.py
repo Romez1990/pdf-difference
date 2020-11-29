@@ -14,7 +14,6 @@ from ..recent_files import (
 )
 from .main_window_ui import Ui_main_window
 
-import time
 
 class MainWindow(QMainWindow, Ui_main_window):
     def __init__(self) -> None:
