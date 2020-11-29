@@ -1,11 +1,14 @@
-from pathlib import Path
 from threading import Thread
+from pathlib import Path
 from typing import (
     Optional,
 )
+from PyQt5.QtWidgets import (
+    QMainWindow,
+    QFileDialog,
+    QMessageBox,
+)
 import os
-
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 
 from ..difference import get_difference
 from ..recent_files import (
