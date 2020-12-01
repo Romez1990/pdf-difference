@@ -226,7 +226,7 @@ class Ui_main_window(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "PDF comp"))
+        Form.setWindowTitle(_translate("Form", "PDF Difference"))
         self.pushButton_1.setText(_translate("Form", "Browse"))
         self.pushButton_2.setText(_translate("Form", "Compare"))
         self.pushButton_3.setText(_translate("Form", "Browse"))
