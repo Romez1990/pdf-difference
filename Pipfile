@@ -5,6 +5,7 @@ verify_ssl = true
 
 [scripts]
 main = "python main.py"
+build = "pyinstaller --noconfirm main.spec"
 
 [requires]
 python_version = "3.8"
