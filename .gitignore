@@ -1,5 +1,9 @@
 # Python
 __pycache__/
 
+# Pyinstaller
+/build/
+/dist/
+
 # Output
 /recent_files/
