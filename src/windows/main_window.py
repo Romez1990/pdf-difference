@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import (
     QMainWindow,
     QFileDialog,
     QMessageBox,
+    QTextEdit,
 )
 
 from ..difference import get_difference
@@ -58,7 +59,7 @@ class MainWindow(QMainWindow, Ui_main_window):
             return None
         return Path(path)
 
-    def __show_or_hide_file_name(self, text_edit, path: Optional[Path]) -> None:
+    def __show_or_hide_file_name(self, text_edit: QTextEdit, path: Optional[Path]) -> None:
         if path is None:
             text_edit.hide()
             return
