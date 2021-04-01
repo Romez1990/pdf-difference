@@ -8,7 +8,7 @@ main = "python main.py"
 build = "pyinstaller --noconfirm main.spec"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [packages]
 pillow = "*"
